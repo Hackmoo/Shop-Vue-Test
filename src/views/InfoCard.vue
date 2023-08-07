@@ -31,6 +31,8 @@ const store = useFavoritesStore()
 
 store.getElement(route.params.id)
 
+console.log(route.params.id)
+
 const element = computed(() => {
   return store.$state.openedElement
 })

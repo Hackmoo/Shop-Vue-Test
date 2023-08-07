@@ -7,7 +7,8 @@ export const useFavoritesStore = defineStore('favorite',{
   state: () => ({
     count: 0,
     data: [],
-    openedElement: undefined
+    openedElement: undefined,
+    favorites: []
   }),
   actions: {
     increment() {
@@ -27,8 +28,11 @@ export const useFavoritesStore = defineStore('favorite',{
       const res = await goods.get()
       this.data = res.data.map(el => Object.assign(el,{isFavorite: false}))
     },
-    addFavorite() {
-      
+    addFavorite(id) {
+      this.favorites = [...this.favorites, {id: id}]
+    },
+    delFavorite(id) {
+      this.favorites = this.favorites.filter(el => el.id !== id)
     }
   },
 })

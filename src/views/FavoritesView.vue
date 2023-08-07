@@ -8,17 +8,18 @@
         </div>
       </div>
       <h1 class="favorites__label">Избранное</h1>
-      <GoodCardList  :array="test"/>
+      <GoodCardList  :array="store.$state.favorites"/>
     </div>
-    <FooterComponentVue :style="test.length > 4 ? '' : 'position: fixed; bottom: 0' "/>
+    <FooterComponentVue :style="store.$state.favorites.length > 4 ? '' : 'position: fixed; bottom: 0' "/>
   </div>
 </template>
 
 <script setup lang="ts">
 import GoodCardList from '@/components/GoodCardList.vue'
 import FooterComponentVue from '@/components/FooterComponent.vue'
+import { useFavoritesStore } from '@/stores/counter';
 
-const test = [{id: 2}, {id:3}]
+const store = useFavoritesStore()
 </script>
 
 <style scoped>

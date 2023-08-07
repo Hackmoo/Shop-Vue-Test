@@ -1,12 +1,16 @@
 <template>
   <button class="button">
-    <HeartCardVue class="button__heart"/>
-    Избранное
+    <HeartCardVue class="button__heart" :style="element && 'fill: #0A1E32'"/>
+    Избранное 
     </button>
 </template>
 
 <script setup lang="ts">
 import HeartCardVue from "../icons/HeartCard.vue";
+const props = defineProps({
+  element: Boolean
+})
+
 </script>
 
 <style scoped lang="scss">

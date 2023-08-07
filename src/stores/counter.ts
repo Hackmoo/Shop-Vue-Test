@@ -7,7 +7,6 @@ export const useFavoritesStore = defineStore('favorite',{
   state: () => ({
     count: 0,
     data: [],
-    openedElement: undefined,
     favorites: []
   }),
   actions: {
@@ -17,21 +16,19 @@ export const useFavoritesStore = defineStore('favorite',{
     decrease() {
       this.count--
     },
-   async getElement(id){
+   async getElement(){
       if(this.data.length === 0){
       await this.getData()
       }
-      this.openedElement = this.data.find(el => el.id === id)
-      return this.openedElement
     },
     async getData(){
       const res = await goods.get()
       this.data = res.data.map(el => Object.assign(el,{isFavorite: false}))
     },
-    addFavorite(id) {
+    addFavorite(id: Number) {
       this.favorites = [...this.favorites, {id: id}]
     },
-    delFavorite(id) {
+    delFavorite(id: Number) {
       this.favorites = this.favorites.filter(el => el.id !== id)
     }
   },

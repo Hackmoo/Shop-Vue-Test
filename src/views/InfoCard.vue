@@ -11,11 +11,17 @@
           <h1>{{ element.title }}</h1>
           <p>{{ element.description }}</p>
           <div class="info__card__price">{{ element.price }} руб.</div>
-          <MyButtonVue />
+          <MyButtonVue @click="setFavorite()" :element="element.isFavorite"/>
         </div>
       </div>
     </div>
-    <FooterComponentVue style="position: absolute; bottom: 0" />
+    <div class="info__error" v-if="element === undefined">
+      <div class="container" style="margin-top: 32px; z-index: 999; position: relative;">
+        <router-link to="/" class="link">Главная</router-link>
+      </div>
+      <h1 class="info__error__text">Товар не найден</h1>
+    </div>
+    <FooterComponentVue style="position: fixed; bottom: 0" />
   </div>
 </template>
 
@@ -31,11 +37,24 @@ const store = useFavoritesStore()
 
 store.getElement(route.params.id)
 
-console.log(route.params.id)
-
 const element = computed(() => {
-  return store.$state.openedElement
+  return store.$state.data[route.params.id - 1]
 })
+
+async function setFavorite() {
+  if (!element.value.isFavorite) {
+    await store.increment()
+    element.value.isFavorite = !element.value.isFavorite
+    store.addFavorite(element.value.id)
+    return
+  }
+  if (element.value.isFavorite) {
+    await store.decrease()
+    element.value.isFavorite = !element.value.isFavorite
+    store.delFavorite(element.value.id)
+    return
+  }
+}
 
 </script>
 
@@ -87,5 +106,16 @@ const element = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+.info__error__text{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 </style>

@@ -3,7 +3,7 @@
     <HeartCardVue
       class="card__heart"
       @click="setFavorite()"
-      :style="element.isFavorite && 'fill: red'"
+      :style="element.isFavorite && 'fill: #0A1E32'"
       v-if="route.path !== '/favorites'"
     />
     <CrossIconVue v-if="route.path === '/favorites'" class="card__heart" @click="setFavorite()" />
@@ -91,10 +91,15 @@ async function setFavorite() {
   top: 10px;
   cursor: pointer;
 }
-
 .card__heart:hover {
-  fill: rgb(247, 101, 101);
+  fill: #0A1E32;
+  opacity: 0.5;
 }
+.card__heart:active {
+  fill: #0A1E32;
+  opacity: 1;
+}
+
 
 .card:hover {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);

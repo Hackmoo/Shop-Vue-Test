@@ -61,5 +61,6 @@ line-height: 12px; /* 150% */
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  width: 100%;
 }
 </style>

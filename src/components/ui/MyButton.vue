@@ -37,6 +37,15 @@ transition: all 0.2s ease-in-out;
  .button:hover{
     .button__heart{
       fill: #0A1E32;
+      opacity: 0.5;
+    }
+    
+ }
+
+ .button:active{
+  .button__heart{
+      fill: #0A1E32;
+      opacity: 1;
     }
  }
 </style>

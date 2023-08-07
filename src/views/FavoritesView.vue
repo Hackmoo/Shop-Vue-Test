@@ -18,7 +18,7 @@
 import GoodCardList from '@/components/GoodCardList.vue'
 import FooterComponentVue from '@/components/FooterComponent.vue'
 
-const test = [1]
+const test = [{id: 2}, {id:3}]
 </script>
 
 <style scoped>

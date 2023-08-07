@@ -2,9 +2,6 @@
   <div>
     <div class="cards" v-if="array.length > 0 ">
       <GoodCardVue
-        :image="el.image"
-        :price="el.price"
-        :title="el.title"
         v-for="el in array"
         :key="el.id"
         :id="el.id"

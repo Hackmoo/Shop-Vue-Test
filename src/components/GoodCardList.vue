@@ -2,11 +2,12 @@
   <div>
     <div class="cards" v-if="array.length > 0 ">
       <GoodCardVue
-        :image="'test.png'"
-        :price="2300"
-        :title="'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops'"
-        v-for="(el, i) in array"
-        :key="i"
+        :image="el.image"
+        :price="el.price"
+        :title="el.title"
+        v-for="el in array"
+        :key="el.id"
+        :id="el.id"
       />
     </div>
     <div v-else>

@@ -1,10 +1,10 @@
 <template>
   <div class="card">
-    <HeartCardVue class="card__heart" @click="setFavorite()" :style="isFavorite && 'fill: red'"/>
-    <router-link to="/info">
-    <img :src="image" alt="image" class="card__image">
-    <div class="card__title">{{ title }}</div>
-    <div class="card__price">{{ price }} руб.</div>
+    <HeartCardVue class="card__heart" @click="setFavorite()" :style="element.isFavorite && 'fill: red'"/>
+    <router-link :to="`/info/${element.id}`">
+    <img :src="element.image" alt="image" class="card__image">
+    <div class="card__title">{{ element.title }}</div>
+    <div class="card__price">{{ element.price }} руб.</div>
   </router-link>
   </div>
 </template>
@@ -12,27 +12,30 @@
 <script setup lang="ts">
 import HeartCardVue from "./icons/HeartCard.vue"
 import { useFavoritesStore } from "@/stores/counter";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const store = useFavoritesStore()
 
-  defineProps({
-    title: String,
-    price: Number,
-    image: String
+
+
+ const props = defineProps({
+    id: Number
   })
 
-  let isFavorite = ref(false)
+  const element = computed(() => {
+    return store.$state.data.find((el) => el.id === props.id)
+  })
 
-  function setFavorite(){
-    if(!isFavorite.value){
-      store.increaseAmount()
-      isFavorite.value = !isFavorite.value
+
+  async function setFavorite(){
+    if(!element.value.isFavorite){
+     await store.increment()
+     element.value.isFavorite = !element.value.isFavorite
       return;
     }
-    if(isFavorite.value){
-       store.decreaseAmount()
-       isFavorite.value = !isFavorite.value
+    if(element.value.isFavorite){
+      await store.decrease()
+      element.value.isFavorite = !element.value.isFavorite
        return;
     }
   }

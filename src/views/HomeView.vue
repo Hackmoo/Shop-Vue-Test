@@ -2,22 +2,18 @@
   <div class="Home">
     <img src="test.png" alt="" class="Home__image" />
     <div class="container">
-     <GoodCardList :array="test"/>
+      <GoodCardList :array="store.$state.data" />
     </div>
-    <FooterComponentVue/>
+    <FooterComponentVue />
   </div>
 </template>
 
 <script setup lang="ts">
-import {useDataStore} from '@/stores/counter'
 import FooterComponentVue from '@/components/FooterComponent.vue'
-import GoodCardList from '@/components/GoodCardList.vue';
+import GoodCardList from '@/components/GoodCardList.vue'
+import { useFavoritesStore } from '@/stores/counter'
 
-let data = useDataStore()
-
-
-const test = [1,2,3,4,5,6,7,78,8,8,1,2]
-
+const store = useFavoritesStore()
 
 </script>
 

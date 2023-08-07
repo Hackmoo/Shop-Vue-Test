@@ -1,33 +1,40 @@
 <template>
-  <div class="info">
-    <div class="info__content container">
-      <div class="info__content__links">
-        <router-link to="/" class="link">Главная</router-link><span>›</span><span>{{ name }} </span>
+  <div class="info" >
+    <div class="info__content container" v-if="element !== undefined">
+      <div class="info__content__links" >
+        <router-link to="/" class="link">Главная</router-link><span>›</span
+        ><span>{{ element.title }} </span>
       </div>
       <div class="info__card">
-        <div><img src="test.png" alt="" class="info__card__image" /></div>
+        <div><img :src="element.image" alt="" class="info__card__image" /></div>
         <div class="info__card__leftSide">
-          <h1>{{ name }} </h1>
-          <p>{{ description }}</p>
-          <div class="info__card__price">{{ price }} руб.</div>
+          <h1>{{ element.title }}</h1>
+          <p>{{ element.description }}</p>
+          <div class="info__card__price">{{ element.price }} руб.</div>
           <MyButtonVue />
         </div>
       </div>
     </div>
-    <FooterComponentVue style="position: absolute; bottom: 0;"/>
+    <FooterComponentVue style="position: absolute; bottom: 0" />
   </div>
 </template>
 
 <script setup lang="ts">
-import FooterComponentVue from "../components/FooterComponent.vue"
-import MyButtonVue from "../components/ui/MyButton.vue"
+import { useRoute } from 'vue-router'
+import FooterComponentVue from '../components/FooterComponent.vue'
+import MyButtonVue from '../components/ui/MyButton.vue'
+import { useFavoritesStore } from '@/stores/counter'
+import { computed } from 'vue'
 
+const route = useRoute()
+const store = useFavoritesStore()
 
-const name = 'Название'
-const image = 'test.png'
-const description =
-  'Сумочка-тоут среднего размера идеально держит форму, выполнена из экокожи черного цвета и черного меха. Имеет одно просторное отделение с карманом перегородкой и внутренним карманом на молнии. '
-const price = 2300
+store.getElement(route.params.id)
+
+const element = computed(() => {
+  return store.$state.openedElement
+})
+
 </script>
 
 <style scoped>
@@ -61,8 +68,10 @@ const price = 2300
 .info__card__image {
   width: 680px;
   height: 580px;
-  border: 1px solid #E5E5E5;
-background: url(<path-to-image>), lightgray 50% / cover no-repeat; 
+  border: 1px solid #e5e5e5;
+  background:
+    url(<path-to-image>),
+    lightgray 50% / cover no-repeat;
 }
 .info__card__price {
   color: var(--0-a-1-e-32, #0a1e32);
@@ -72,9 +81,9 @@ background: url(<path-to-image>), lightgray 50% / cover no-repeat;
   font-weight: 700;
   line-height: 40px; /* 125% */
 }
-.info__card__leftSide{
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+.info__card__leftSide {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 </style>

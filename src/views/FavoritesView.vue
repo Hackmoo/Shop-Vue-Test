@@ -18,8 +18,6 @@
 import GoodCardList from '@/components/GoodCardList.vue'
 import FooterComponentVue from '@/components/FooterComponent.vue'
 
-console.log(window.location.href)
-
 const test = [1]
 </script>
 

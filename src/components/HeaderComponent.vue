@@ -5,7 +5,7 @@
     <div class="favorites">
       <router-link to="/favorites">
       <HeartIconVue class="heart-icon"/>
-    <div class="favoritesAmount"><span class="favoritesAmount__number">{{ store.$state.amount }}</span></div>
+    <div class="favoritesAmount"><span class="favoritesAmount__number">{{ store.$state.count }}</span></div>
   </router-link>
     </div>
   </div>

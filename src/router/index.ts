@@ -12,7 +12,7 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/info',
+      path: '/info/:id',
       name: 'info',
       component: InfoCard
     },

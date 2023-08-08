@@ -7,7 +7,7 @@
       v-if="route.path !== '/favorites'"
     />
     <CrossIconVue v-if="route.path === '/favorites'" class="card__heart" @click="setFavorite()" />
-    <router-link :to="`/info/${element.id}`">
+    <router-link :to="`/info/${element.id}`" class="routerLink">
       <img :src="element.image" alt="image" class="card__image" />
       <div class="card__title">{{ element.title }}</div>
       <div class="card__price">{{ element.price }} руб.</div>
@@ -21,7 +21,6 @@ import CrossIconVue from './icons/CrossIcon.vue'
 import { useFavoritesStore } from '@/stores/counter'
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-
 
 const route = useRoute()
 
@@ -92,16 +91,18 @@ async function setFavorite() {
   cursor: pointer;
 }
 .card__heart:hover {
-  fill: #0A1E32;
+  fill: #0a1e32;
   opacity: 0.5;
 }
 .card__heart:active {
-  fill: #0A1E32;
+  fill: #0a1e32;
   opacity: 1;
 }
 
-
 .card:hover {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.routerLink:hover {
+  background: none;
 }
 </style>

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HeaderComponentVue from './components/HeaderComponent.vue'
+import HeaderComponentVue from '@/components/HeaderComponent.vue'
 import { useFavoritesStore } from '@/stores/counter'
-import PreloaderVue from './components/Preloader.vue'
+import PreloaderVue from '@/components/Preloader.vue'
 import { ref } from 'vue'
-
 
 const store = useFavoritesStore()
 
@@ -15,8 +14,8 @@ let preloar = ref(true)
 document.body.classList.add('scrollLock')
 
 setTimeout(() => {
- preloar.value = false
- document.body.classList.remove('scrollLock')
+  preloar.value = false
+  document.body.classList.remove('scrollLock')
 }, 1000)
 </script>
 
@@ -24,7 +23,7 @@ setTimeout(() => {
   <div class="test">
     <HeaderComponentVue />
     <RouterView />
-    <PreloaderVue v-if="preloar"/>
+    <PreloaderVue v-if="preloar" />
   </div>
 </template>
 
@@ -75,7 +74,10 @@ p {
   font-weight: 400;
   line-height: 24px;
 }
-.scrollLock{
+.scrollLock {
   overflow: hidden;
+}
+html {
+  overflow-y: scroll;
 }
 </style>

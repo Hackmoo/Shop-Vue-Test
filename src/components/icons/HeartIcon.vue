@@ -7,6 +7,7 @@
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
+      class="test"
     />
   </svg>
 </template>
@@ -15,4 +16,9 @@
 export default {}
 </script>
 
-<style></style>
+<style scoped>
+.test:hover {
+  fill: #0a1e32;
+  opacity: 0.5;
+}
+</style>

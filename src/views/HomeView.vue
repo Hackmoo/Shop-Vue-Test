@@ -14,7 +14,6 @@ import GoodCardList from '@/components/GoodCardList.vue'
 import { useFavoritesStore } from '@/stores/counter'
 
 const store = useFavoritesStore()
-
 </script>
 
 <style>

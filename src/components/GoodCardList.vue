@@ -1,11 +1,7 @@
 <template>
   <div>
-    <div class="cards" v-if="array.length > 0 ">
-      <GoodCardVue
-        v-for="el in array"
-        :key="el.id"
-        :id="el.id"
-      />
+    <div class="cards" v-if="array.length > 0">
+      <GoodCardVue v-for="el in array" :key="el.id" :id="el.id" />
     </div>
     <div v-else>
       <h1 class="cards__emptyList">Список избранного пуст</h1>
@@ -14,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import GoodCardVue from '../components/GoodCard.vue'
+import GoodCardVue from '@/components/GoodCard.vue'
 
 defineProps({
   array: Array
@@ -31,7 +27,7 @@ defineProps({
   gap: 40px;
   margin-bottom: 110px;
 }
-.cards__emptyList{
+.cards__emptyList {
   text-align: center;
   margin-top: 123px;
 }

@@ -1,7 +1,7 @@
 <template>
-  <div class="info" >
+  <div class="info">
     <div class="info__content container" v-if="element !== undefined">
-      <div class="info__content__links" >
+      <div class="info__content__links">
         <router-link to="/" class="link">Главная</router-link><span>›</span
         ><span>{{ element.title }} </span>
       </div>
@@ -11,12 +11,12 @@
           <h1>{{ element.title }}</h1>
           <p>{{ element.description }}</p>
           <div class="info__card__price">{{ element.price }} руб.</div>
-          <MyButtonVue @click="setFavorite()" :element="element.isFavorite"/>
+          <MyButtonVue @click="setFavorite()" :element="element.isFavorite" />
         </div>
       </div>
     </div>
     <div class="info__error" v-if="element === undefined">
-      <div class="container" style="margin-top: 32px; z-index: 999; position: relative;">
+      <div class="container" style="margin-top: 32px; z-index: 999; position: relative">
         <router-link to="/" class="link">Главная</router-link>
       </div>
       <h1 class="info__error__text">Товар не найден</h1>
@@ -27,8 +27,8 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import FooterComponentVue from '../components/FooterComponent.vue'
-import MyButtonVue from '../components/ui/MyButton.vue'
+import FooterComponentVue from '@/components/FooterComponent.vue'
+import MyButtonVue from '@/components/ui/MyButton.vue'
 import { useFavoritesStore } from '@/stores/counter'
 import { computed } from 'vue'
 
@@ -55,7 +55,6 @@ async function setFavorite() {
     return
   }
 }
-
 </script>
 
 <style scoped>
@@ -107,7 +106,7 @@ async function setFavorite() {
   flex-direction: column;
   gap: 24px;
 }
-.info__error__text{
+.info__error__text {
   position: absolute;
   top: 0;
   left: 0;

@@ -1,46 +1,40 @@
-# shop
-
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
+# Проект написан на Vue 3, TS, Pinia.
+Для получения данных с сервера был использовал axios  <br/>
+Весь Vue код написан на Composition API с использованием TypeScript <br/>
+Для форматирования текста был использован Prettier <br/>
+Глобальное хранилище состояний Pinia <br/>
+В качестве сборщика был использован Vite
+Адаптивной версткий <strong>НЕТ</strong>. Приложение тестировалось только в разрешении 1920x1080
+## Запуск проекта
 ```sh
 npm install
 ```
-
-### Compile and Hot-Reload for Development
-
 ```sh
 npm run dev
 ```
+## Выполненые задачи проекта 
+### Задачи, которые были частью технического задания
+<ul>
+    <li>
+        Все действия на сайте происходят без перезагрузки страницы.
+    </li>
+    <li>
+        Все действия на сайте происходят без перезагрузки страницы.
+    </li>
+    <li>
+        Верстка выполнена без использования UI библиотек.
+    </li>
+    <li>
+        Данные для товаров иоспользуются из fakestore: https://fakestoreapi.com/products
+    </li>
+</ul>
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+### Задачи, которые не были частью технического задания
+<ul>
+    <li>
+        Добавлена заглушка при переходе на страницу товара, которого нет(Например если перейти на страницу товара с id 80, то выведет товар не найден)
+    </li>
+    <li>
+        Добавлен прелоадер, чтобы скрыть первоначальную прогрузку состояний приложения
+    </li>
+</ul>
